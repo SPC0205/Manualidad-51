@@ -1,0 +1,111 @@
+<html>
+<head>
+    <style>
+        body {
+            background-color: #e755af;
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        @keyframes fall {
+            0% {
+                top: -10%;
+                opacity: 1;
+            }
+            100% {
+                top: 110%;
+                opacity: 0;
+            }
+        }
+        .flower {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: yellow;
+            border-radius: 50%;
+            animation: fall linear infinite;
+        }
+        .flower .petal1,
+        .flower .petal2,
+        .flower .petal3,
+        .flower .petal4 {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: yellow;
+            border-radius: 50%;
+        }
+        .flower .petal1 {
+            top: -10px;
+            left: 0;
+        }
+        .flower .petal2 {
+            top: 0;
+            left: 10px;
+        }
+        .flower .petal3 {
+            top: 10px;
+            left: 0;
+        }
+        .flower .petal4 {
+            top: 0;
+            left: -10px;
+        }
+        .flower .center {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: brown;
+            border-radius: 50%;
+            top: 5px;
+            left: 5px;
+        }
+        .message {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: yellow;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="message">14 días restantes</div>
+    <script>
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.classList.add('flower');
+            flower.style.left = Math.random() * 100 + 'vw';
+            flower.style.animationDuration = Math.random() * 2 + 3 + 's';
+
+            const petal1 = document.createElement('div');
+            petal1.classList.add('petal1');
+            flower.appendChild(petal1);
+
+            const petal2 = document.createElement('div');
+            petal2.classList.add('petal2');
+            flower.appendChild(petal2);
+
+            const petal3 = document.createElement('div');
+            petal3.classList.add('petal3');
+            flower.appendChild(petal3);
+
+            const petal4 = document.createElement('div');
+            petal4.classList.add('petal4');
+            flower.appendChild(petal4);
+
+            const center = document.createElement('div');
+            center.classList.add('center');
+            flower.appendChild(center);
+
+            document.body.appendChild(flower);
+
+            setTimeout(() => {
+                flower.remove();
+            }, 5000);
+        }
+
+        setInterval(createFlower, 200);
+    </script>
+</body>
+</html>
